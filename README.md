@@ -24,7 +24,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 # API-Unfollowers
 
-Laravel 10 REST-API processes a user's request, which includes a ZIP file containing user data requested to Instagram. The API returns the list of users who are not following the requesting user back, as well as the list of users whom the requesting user does not follow back.
+Laravel 10 REST-API processes an user's request, which includes a ZIP file containing user data requested to Instagram. The API returns the list of users who are not following the requesting user back, as well as the list of users whom the requesting user does not follow back.
 
 
 ## Installation
