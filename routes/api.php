@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\UsernameController;
+use App\Http\Controllers\Api\UsuariosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('store',[UsernameController::class,'store']);
+Route::post('store',[UsuariosController::class,'store']);
 
-Route::get('unfollowers/{user}',[UsernameController::class,'getUnfollowers']);
+Route::get('unfollowers/{user}',[UsuariosController::class,'getUnfollowers']);
 
-Route::get('unfollowing/{user}',[UsernameController::class,'getNotFollowing']);
+Route::get('unfollowing/{user}',[UsuariosController::class,'getNotFollowing']);
