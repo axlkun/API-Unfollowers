@@ -67,14 +67,14 @@ class UsuariosController extends Controller
                     Data::updateOrCreate(
                         ['usuario_id' => $usuarioId], // Condición para buscar un registro existente
                         [ // Nuevos datos para actualizar
-                            'close_friends' => $data['close_friends'],
-                            'followers' => $data['followers_1'],
-                            'following' => $data['following'],
-                            'hide_story_from' => $data['hide_story_from'],
-                            'pending_follow_requests' => $data['pending_follow_requests'],
-                            'recent_follow_requests' => $data['recent_follow_requests'],
-                            'recently_unfollowed_accounts' => $data['recently_unfollowed_accounts'],
-                            'removed_suggestions' => $data['removed_suggestions']
+                            'close_friends' => isset($data['close_friends']) ? $data['close_friends'] : null,
+                            'followers' => isset($data['followers_1']) ? $data['followers_1'] : null,
+                            'following' => isset($data['following']) ? $data['following'] : null,
+                            'hide_story_from' => isset($data['hide_story_from']) ? $data['hide_story_from'] : null,
+                            'pending_follow_requests' => isset($data['pending_follow_requests']) ? $data['pending_follow_requests'] : null,
+                            'recent_follow_requests' => isset($data['recent_follow_requests']) ? $data['recent_follow_requests'] : null,
+                            'recently_unfollowed_accounts' => isset($data['recently_unfollowed_accounts']) ? $data['recently_unfollowed_accounts'] : null,
+                            'removed_suggestions' => isset($data['removed_suggestions']) ? $data['removed_suggestions'] : null
                         ]
                     );
 
@@ -89,7 +89,12 @@ class UsuariosController extends Controller
 
                     return response()->json([
                         'status' => 500,
-                        'message' => 'Something went wrong!'
+                        'message' => 'Something went wrong!',
+                        'error' => [
+                            'message' => $e->getMessage(),   // Mensaje de error
+                            'file' => $e->getFile(),         // Archivo donde ocurrió la excepción
+                            'line' => $e->getLine()          // Línea en la que ocurrió la excepción
+                        ]
                     ], 500);
                 }
             } else {
